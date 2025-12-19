@@ -4,7 +4,7 @@ import { sites, type SiteId } from "@/app/config/sites"
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    console.log("[v0] Received order request:", body)
+    console.log("[Shopper Agent] Received order request:", body)
 
     const siteId = body.siteId as SiteId || "site1"
     const site = sites[siteId]
@@ -59,7 +59,7 @@ export async function POST(request: Request) {
       },
     }
 
-    console.log("[v0] Sending payload to site:", payload)
+    console.log("[Shopper Agent] Sending payload to site:", payload)
 
     // Construct the API URL based on site configuration. Prefer explicit orderPath if provided.
     const apiPath = site.orderPath ?? (site.apiVersion ? `/api/${site.apiVersion}/orders` : '/api/orders')
@@ -73,9 +73,9 @@ export async function POST(request: Request) {
     // Log the request details for debugging (mask api key value when logging headers)
     const maskedHeaders = { ...headers }
     if (maskedHeaders[site.apiKeyHeader]) maskedHeaders[site.apiKeyHeader] = "[REDACTED]"
-    console.log("[v0] Order URL:", orderUrl)
-    console.log("[v0] Request headers:", maskedHeaders)
-    console.log("[v0] Request payload:", payload)
+    console.log("[Shopper Agent] Order URL:", orderUrl)
+    console.log("[Shopper Agent] Request headers:", maskedHeaders)
+    console.log("[Shopper Agent] Request payload:", payload)
 
     const response = await fetch(orderUrl, {
       method: "POST",
@@ -83,17 +83,17 @@ export async function POST(request: Request) {
       body: JSON.stringify(payload),
     })
 
-    console.log("[v0] Site response status:", response.status)
+    console.log("[Shopper Agent] Site response status:", response.status)
 
     if (!response.ok) {
       const errorText = await response.text()
-      console.log("[v0] Site error:", errorText)
+      console.log("[Shopper Agent] Site error:", errorText)
       return NextResponse.json({ error: "Failed to place order", details: errorText }, { status: response.status })
     }
 
     const data = await response.json()
-    console.log("[v0] Order placed successfully:", data)
-    console.log("[v0] Full API response data:", JSON.stringify(data, null, 2))
+    console.log("[Shopper Agent] Order placed successfully:", data)
+    console.log("[Shopper Agent] Full API response data:", JSON.stringify(data, null, 2))
 
     // Normalize the order response based on site
     const orderResponse = {
@@ -115,7 +115,7 @@ export async function POST(request: Request) {
       }
     }
 
-    console.log("[v0] Returning order response:", orderResponse)
+    console.log("[Shopper Agent] Returning order response:", orderResponse)
 
     return NextResponse.json(orderResponse)
   } catch (error) {
