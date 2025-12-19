@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
   try {
     const { email, password } = await request.json()
 
-    console.log("[v0] Attempting login with email:", email)
+    console.log("[Shopper Agent] Attempting login with email:", email)
 
     const response = await fetch(AUTH_URL, {
       method: "POST",
@@ -18,14 +18,14 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify({ email, password }),
     })
 
-    console.log("[v0] Auth response status:", response.status)
-    console.log("[v0] Auth response headers:", Object.fromEntries(response.headers.entries()))
+    console.log("[Shopper Agent] Auth response status:", response.status)
+    console.log("[Shopper Agent] Auth response headers:", Object.fromEntries(response.headers.entries()))
 
     if (response.ok) {
       const userData = await response.json()
 
-      console.log("[v0] Full auth response from original site:", JSON.stringify(userData, null, 2))
-      console.log("[v0] Available fields in response:", Object.keys(userData))
+      console.log("[Shopper Agent] Full auth response from original site:", JSON.stringify(userData, null, 2))
+      console.log("[Shopper Agent] Available fields in response:", Object.keys(userData))
 
       const authToken =
         userData.token ||
@@ -37,9 +37,9 @@ export async function POST(request: NextRequest) {
         userData.userId ||
         `user_${Date.now()}` // Generate a temporary token if none exists
 
-      console.log("[v0] Extracted auth token:", authToken)
+      console.log("[Shopper Agent] Extracted auth token:", authToken)
       console.log(
-        "[v0] Token source:",
+        "[Shopper Agent] Token source:",
         userData.token
           ? "token"
           : userData.authToken
@@ -64,11 +64,11 @@ export async function POST(request: NextRequest) {
       })
     } else {
       const error = await response.text()
-      console.log("[v0] Auth failed with error:", error)
+      console.log("[Shopper Agent] Auth failed with error:", error)
       return NextResponse.json({ success: false, error: "Invalid credentials" }, { status: 401 })
     }
   } catch (error) {
-    console.error("[v0] Auth error:", error)
+    console.error("[Shopper Agent] Auth error:", error)
     return NextResponse.json({ success: false, error: "Authentication failed" }, { status: 500 })
   }
 }
