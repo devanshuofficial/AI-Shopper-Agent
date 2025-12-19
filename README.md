@@ -257,15 +257,7 @@ This project is licensed under the MIT License.
 
 **Devanshu Singla**
 - GitHub: [@devanshuofficial]
-  
-**Aayush Bansal**
-- GitHub: [@aayush3207]
-
-**Sahil Garg**
-- GitHub: [@SahilGarg15]
-
-
-
+ 
 ## 🙏 Acknowledgments
 
 - [shadcn/ui](https://ui.shadcn.com/) for the beautiful UI components
@@ -275,5 +267,6 @@ This project is licensed under the MIT License.
 ---
 
 Made with ❤️ using Next.js and AI
+
 
 
