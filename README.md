@@ -7,6 +7,10 @@ An intelligent shopping assistant powered by AI that helps users discover produc
 ![React](https://img.shields.io/badge/React-18.x-blue)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.x-38B2AC)
 
+## 🎥 Working Demo
+
+https://github.com/user-attachments/assets/d38a2339-3367-46f1-a9f5-70779142442d
+
 ## ✨ Features
 
 - 🤖 **AI-Powered Chat Interface** - Natural language conversations powered by Grok AI to understand user intent
@@ -267,6 +271,7 @@ This project is licensed under the MIT License.
 ---
 
 Made with ❤️ using Next.js and AI
+
 
 
 
