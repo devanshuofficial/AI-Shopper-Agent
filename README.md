@@ -255,11 +255,10 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 
-**Sahil Garg**
-- GitHub: [@SahilGarg15](https://github.com/SahilGarg15)
+**Devanshu Singla**
+- GitHub: [@devanshuofficial]
 
-**Kunal Bhatia**
-- GitHub: [@Kunalbhatia2601](https://github.com/kunalbhatia2601)
+
 
 ## 🙏 Acknowledgments
 
@@ -270,3 +269,4 @@ This project is licensed under the MIT License.
 ---
 
 Made with ❤️ using Next.js and AI
+
