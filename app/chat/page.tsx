@@ -174,7 +174,7 @@ const searchProducts = (products: Product[], query: string, keywords?: string[],
     const searchTokens = keywords && keywords.length > 0 ? keywords.map(k => k.toLowerCase()) : preprocessQuery(query)
     const matchingProducts: Array<{ product: Product; score: number; avgRating: number; hasNameMatch: boolean }> = []
 
-    console.log("[v0] Searching with keywords:", searchTokens, "exclude:", excludeKeywords)
+    console.log("[Shopper Agent] Searching with keywords:", searchTokens, "exclude:", excludeKeywords)
 
     for (const product of products) {
         if (priceRange) {
@@ -461,7 +461,7 @@ export default function ChatPage() {
                     return { content: suggestions[Math.floor(Math.random() * suggestions.length)] }
                 }
             } catch (error) {
-                console.error("[v0] Error generating response:", error)
+                console.error("[Shopper Agent] Error generating response:", error)
                 return { content: "I'm having trouble processing your request. Please try again." }
             }
         },
